@@ -1,11 +1,69 @@
 ---
-title: "team12"
-author: "Kexin Xu"
-date: "2021/5/13"
-output: html_document
+title: "Report"
+author:
+- familyname: Wang
+  othernames: Yiru
+  address: Monash Universtidy
+  email: "ywan0553@student.monash.edu"
+  correspondingauthor: true
+  qualifications: section1
+- familyname: Xu
+  othernames: Kexin
+  address: Monash University
+  email: "kxuu0029@student.monash.edu"
+  qualifications: section2
+  correspondingauthor: true
+- familyname: Tang
+  othernames: Ruiqi
+  address: Monash University
+  email: "rtan00062student.monash.edu"
+  correspondingauthor: true
+  qualifications: section3
+department: Our consultancy \newline Yiru Wang &\newline Kexin XU &\newline Ruiqi Tang
+organization: Australian Government COVID19
+bibliography: references.bib
+biblio-style: authoryear-comp
+linestretch: 1.5
+output:
+  bookdown::pdf_document2:
+    template: monashreport2.tex
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 8
+    includes:
+      in_header: preamble.tex
+    keep_tex: yes
+    number_sections: yes
+    citation_package: biblatex
+    toc: false
+header-includes:
+ \usepackage{float}
+ \floatplacement{figure}{H}
+ \floatplacement{table}{H}
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.align = "center", out.width = "50%")
 ```
+
+
+
+```{r , echo = FALSE, message = FALSE, warning = FALSE}
+# Libraries
+library(tinytex)
+library(gridExtra)
+library(tidyverse)
+library(readr)
+library(bookdown)
+library(knitr)
+```
+
+\section*{State}
+
+
+\section*{Gender}
+
+
+\section*{Age}
+
 
