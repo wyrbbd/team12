@@ -56,10 +56,19 @@ library(tidyverse)
 library(readr)
 library(bookdown)
 library(knitr)
+library(readxl)
+library(haven)
 ```
 
 \section*{State}
 
+```{r NewSouthWales}
+
+```
+
+```{r}
+
+```
 
 \section*{Gender}
 
