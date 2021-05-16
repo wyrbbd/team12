@@ -28,8 +28,8 @@ output:
   bookdown::pdf_document2:
     template: monashreport2.tex
     fig_caption: yes
-    fig_height: 5
-    fig_width: 8
+    fig_height: 8
+    fig_width: 10
     includes:
       in_header: preamble.tex
     keep_tex: yes
@@ -43,7 +43,11 @@ header-includes:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.align = "center", out.width = "50%")
+knitr::opts_chunk$set(echo = FALSE, 
+                      eval = TRUE,
+                      cache=TRUE, 
+                      messages=FALSE, 
+                      warning=FALSE)
 ```
 
 
@@ -174,8 +178,14 @@ State <- bind_rows(NewSouthWales,Victoria,Queensland,South_Australia,Western_Aus
 ```
 
 
-```{r}
-
+```{r plot1,fig.height = 8 , fig.width=10}
+State %>%
+  ggplot(aes(x = Offence,
+             y = Count,
+             fill = State))+
+  geom_bar(stat = "identity",position = "dodge")+
+  ggtitle("State") +
+  facet_wrap(~Year, ncol = 1,scales= "free")
 ```
 
 
