@@ -63,12 +63,122 @@ library(haven)
 \section*{State}
 
 ```{r NewSouthWales}
-
+NewSouthWales <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 3,range = "A5:AB30")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Count") %>%
+  mutate(State = "NewSouthWales")%>%
+  select(Offence,Year,Count,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
 ```
+
+```{r Victoria}
+Victoria <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 4,range = "A5:AB28")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Count") %>%
+  mutate(State = "Victoria")%>%
+  select(Offence,Year,Count,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
+```
+
+```{r Queensland}
+Queensland <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 5,range = "A5:AB28")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Count") %>%
+  mutate(State = "Queensland")%>%
+  select(Offence,Year,Count,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
+```
+
+```{r South_Australia}
+South_Australia <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 6,range = "A5:AB30")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Count") %>%
+  mutate(State = "South Australia")%>%
+  select(Offence,Year,Count,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
+```
+
+```{r Western_Australia}
+Western_Australia <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 7,range = "A5:AB30")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Count") %>%
+  mutate(State = "Western Australia")%>%
+  select(Offence,Year,Count,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
+```
+
+```{r Tasmania1}
+Tasmania1 <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", 
+                       sheet = 8,range = "A5:AB22")%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))%>%
+  select(!("1993":"2009"))%>%
+  pivot_longer(cols = '2010':'2013',  
+               names_to = "Year",            
+               values_to = "Count") %>%
+  mutate(Count = as.double(Count))%>%
+ mutate(State = "Tasmania")%>%
+  select(Offence,Year,Count,State)
+```
+
+```{r Tasmania}
+Tasmania2 <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", 
+                       sheet = 8,range = "A5:AB22")%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))%>%
+  select(!("1993":"2013"))%>%
+  pivot_longer(cols = '2014':'2019',  
+               names_to = "Year",            
+               values_to = "Count") %>%
+ mutate(State = "Tasmania")%>%
+ select(Offence,Year,Count,State)
+Tasmania <- bind_rows(Tasmania1,Tasmania2)
+```
+
+
+
+```{r Northern_Territory}
+Northern_Territory <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 9,range = "A5:AB30")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Count") %>%
+  mutate(State = "Northern Territory")%>%
+  select(Offence,Year,Count,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
+```
+
+```{r Capital}
+Capital <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 10,range = "A5:AB30")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Count") %>%
+  mutate(State = "Capital")%>%
+  select(Offence,Year,Count,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
+```
+
+```{r State}
+State <- bind_rows(NewSouthWales,Victoria,Queensland,South_Australia,Western_Australia,Tasmania,Northern_Territory,Capital)
+```
+
 
 ```{r}
 
 ```
+
+
 
 \section*{Gender}
 
