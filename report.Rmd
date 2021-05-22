@@ -28,8 +28,8 @@ output:
   bookdown::pdf_document2:
     template: monashreport2.tex
     fig_caption: yes
-    fig_height: 8
-    fig_width: 10
+    fig_height: 5 
+    fig_width: 8
     includes:
       in_header: preamble.tex
     keep_tex: yes
@@ -62,9 +62,14 @@ library(bookdown)
 library(knitr)
 library(readxl)
 library(haven)
+library(kableExtra)
 ```
 
+
+
 \section*{State}
+
+In this section, the number of victims of various crimes in eight Australian states and the number (and rate) of victims per 100,000 people will be analyzed from 2010 to 2019, and the types of crimes with the most victims will be analyzed.
 
 ```{r NewSouthWales}
 NewSouthWales <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 3,range = "A5:AB30")%>%
@@ -77,6 +82,20 @@ NewSouthWales <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sh
 Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
 ```
 
+```{r NewSouthWales-rate,message=FALSE}
+NewSouthWales_rate <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 3,range = "A31:AB41")%>%
+  rename("Offence"= "...1","2010" = "...19" , "2011" = "...20","2012" = "...21","2013"="...22","2014"="...23","2015"="...24","2016"="...25","2017"="...26","2018"="...27","2019"="...28")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Rate") %>%
+  mutate(State = "NewSouthWales")%>%
+  select(Offence,Year,Rate,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction"))
+```
+
+
+
 ```{r Victoria}
 Victoria <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 4,range = "A5:AB28")%>%
   pivot_longer(cols = '2010':'2019',  
@@ -87,6 +106,20 @@ Victoria <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet =
   filter(Offence %in%c("Murder","	
 Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
 ```
+
+```{r Victoria_rate,message=FALSE}
+Victoria_rate <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 4,range = "A29:AB37")%>%
+  rename("Offence"= "...1","2010" = "...19" , "2011" = "...20","2012" = "...21","2013"="...22","2014"="...23","2015"="...24","2016"="...25","2017"="...26","2018"="...27","2019"="...28")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Rate") %>%
+ mutate(State = "Victoria")%>%
+  select(Offence,Year,Rate,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction"))
+```
+
+
 
 ```{r Queensland}
 Queensland <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 5,range = "A5:AB28")%>%
@@ -99,6 +132,20 @@ Queensland <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet
 Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
 ```
 
+```{r Queensland_rate,message=FALSE}
+Queensland_rate <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 5,range = "A29:AB37")%>%
+  rename("Offence"= "...1","2010" = "...19" , "2011" = "...20","2012" = "...21","2013"="...22","2014"="...23","2015"="...24","2016"="...25","2017"="...26","2018"="...27","2019"="...28")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Rate") %>%
+  mutate(State = "Queensland")%>%
+  select(Offence,Year,Rate,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction"))
+```
+
+
+
 ```{r South_Australia}
 South_Australia <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 6,range = "A5:AB30")%>%
   pivot_longer(cols = '2010':'2019',  
@@ -110,6 +157,20 @@ South_Australia <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", 
 Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
 ```
 
+
+```{r South_Australia_rate,message=FALSE}
+South_Australia_rate <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 6,range = "A31:AB41")%>%
+  rename("Offence"= "...1","2010" = "...19" , "2011" = "...20","2012" = "...21","2013"="...22","2014"="...23","2015"="...24","2016"="...25","2017"="...26","2018"="...27","2019"="...28")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Rate") %>%
+mutate(State = "South Australia")%>%
+  select(Offence,Year,Rate,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction"))
+```
+
+
 ```{r Western_Australia}
 Western_Australia <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 7,range = "A5:AB30")%>%
   pivot_longer(cols = '2010':'2019',  
@@ -120,6 +181,19 @@ Western_Australia <- read_excel("data/Victims_of_Crime_Extended_time_series.xls"
   filter(Offence %in%c("Murder","	
 Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
 ```
+
+```{r Western_Australia_rate,message=FALSE}
+Western_Australia_rate <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 7,range = "A31:AB41")%>%
+  rename("Offence"= "...1","2010" = "...19" , "2011" = "...20","2012" = "...21","2013"="...22","2014"="...23","2015"="...24","2016"="...25","2017"="...26","2018"="...27","2019"="...28")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Rate") %>%
+  mutate(State = "Western Australia")%>%
+  select(Offence,Year,Rate,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction"))
+```
+
 
 ```{r Tasmania1}
 Tasmania1 <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", 
@@ -149,6 +223,31 @@ Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed 
 Tasmania <- bind_rows(Tasmania1,Tasmania2)
 ```
 
+```{r Tasmania_rate1,message=FALSE}
+Tasmania_rate1 <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 8,range = "A31:AB41")%>%
+  rename("Offence"= "...1","2010" = "...19" , "2011" = "...20","2012" = "...21","2013"="...22","2014"="...23","2015"="...24","2016"="...25","2017"="...26","2018"="...27","2019"="...28")%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction"))%>%
+  pivot_longer(cols = '2010':'2013',  
+               names_to = "Year",            
+               values_to = "Rate") %>%
+   mutate(Rate = as.double(Rate))%>%
+ mutate(State = "Tasmania")%>%
+  select(Offence,Year,Rate,State)
+```
+
+```{r Tasmania_rate,message=FALSE}
+Tasmania_rate2 <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 8,range = "A31:AB41")%>%
+  rename("Offence"= "...1","2010" = "...19" , "2011" = "...20","2012" = "...21","2013"="...22","2014"="...23","2015"="...24","2016"="...25","2017"="...26","2018"="...27","2019"="...28")%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction"))%>%
+  pivot_longer(cols = '2014':'2019',  
+               names_to = "Year",            
+               values_to = "Rate") %>%
+ mutate(State = "Tasmania")%>%
+  select(Offence,Year,Rate,State)
+Tasmania_rate <- bind_rows(Tasmania_rate1,Tasmania_rate2)
+```
 
 
 ```{r Northern_Territory}
@@ -162,6 +261,19 @@ Northern_Territory <- read_excel("data/Victims_of_Crime_Extended_time_series.xls
 Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
 ```
 
+```{r Northern_Territory_rate,message=FALSE}
+Northern_Territory_rate <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 10,range = "A31:AB41")%>%
+  rename("Offence"= "...1","2010" = "...19" , "2011" = "...20","2012" = "...21","2013"="...22","2014"="...23","2015"="...24","2016"="...25","2017"="...26","2018"="...27","2019"="...28")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Rate") %>%
+  mutate(State = "Northern Territory")%>%
+  select(Offence,Year,Rate,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction"))
+```
+
+
 ```{r Capital}
 Capital <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 10,range = "A5:AB30")%>%
   pivot_longer(cols = '2010':'2019',  
@@ -173,26 +285,164 @@ Capital <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 
 Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction","Armed robbery","	Unarmed robbery","Blackmail/extortion"))
 ```
 
+```{r Capital_rate,message=FALSE}
+Capital_rate <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 10,range = "A31:AB41")%>%
+  rename("Offence"= "...1","2010" = "...19" , "2011" = "...20","2012" = "...21","2013"="...22","2014"="...23","2015"="...24","2016"="...25","2017"="...26","2018"="...27","2019"="...28")%>%
+  pivot_longer(cols = '2010':'2019',  
+               names_to = "Year",            
+               values_to = "Rate") %>%
+  mutate(State = "Capital")%>%
+  select(Offence,Year,Rate,State)%>%
+  filter(Offence %in%c("Murder","	
+Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction"))
+```
+
+
 ```{r State}
 State <- bind_rows(NewSouthWales,Victoria,Queensland,South_Australia,Western_Australia,Tasmania,Northern_Territory,Capital)
 ```
 
+```{r}
+State_rate <- bind_rows(NewSouthWales_rate,Victoria_rate,Queensland_rate,South_Australia_rate,Western_Australia_rate,Tasmania_rate,Northern_Territory_rate,Capital_rate)
+```
 
-```{r plot1,fig.height = 8 , fig.width=10}
+
+```{r plot1,fig.height = 9, fig.width=10,fig.cap="Comparison of the number of victims of various crimes in each state in the same year"}
 State %>%
   ggplot(aes(x = Offence,
              y = Count,
              fill = State))+
-  geom_bar(stat = "identity",position = "dodge")+
-  ggtitle("State") +
+  geom_bar(stat  = "identity", position = "dodge") + 
+  ggtitle("Comparison of the number of victims of various crimes in each state in the same year") +
   facet_wrap(~Year, ncol = 1,scales= "free")
 ```
 
+As can be clearly seen in Figure \@ref(fig:plot1), the number of victims of sexual assault and armed robbery was the largest in the same year.
+
+```{r plot2,fig.height = 8, fig.width=8, fig.cap="Rate of change in the number of victims of various crimes by state"}
+State %>%
+  ggplot(aes( x = Year,     
+              y = Count, 
+              color = Offence,
+              group = Offence)) + 
+  geom_line(stat = "identity")  +
+  theme(axis.title.x =element_text(size=14), axis.title.y=element_text(size=14)) +
+   ggtitle("Rate of change in the number of victims of various crimes by state") +
+  facet_wrap(~State, ncol = 1,scales= "free")
+```
+
+Figure \@ref(fig:plot2) shows the change in the number of crime victims by state over 10 years.Sexual assault and armed robbery are the most victimized crime categories in every state, while other crimes are victimized in relatively small numbers.
+
+
+
+```{r}
+State_count1<-State %>%
+  filter(Offence == "Sexual assault")%>%
+  pivot_wider(id_cols = State,  
+              names_from = Year,  
+              values_from = Count)%>%
+  mutate("Sexual assault_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+  mutate("Sexual assault_change" = (`2019` - `2010`))%>%
+  select(!`2010`:`2019`)
+State_count2<-State %>%
+  filter(Offence == "Murder")%>%
+  pivot_wider(id_cols = State,  
+              names_from = Year,  
+              values_from = Count)%>%
+  mutate("Murder_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+   mutate("Murder_change" = (`2019` - `2010`))%>%
+  select(!`2010`:`2019`)
+State_count3<-State %>%
+  filter(Offence == "Armed robbery")%>%
+  pivot_wider(id_cols = State,  
+              names_from = Year,  
+              values_from = Count)%>%
+  mutate("robbery_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+   mutate("robbery_change" = (`2019` - `2010`))%>%
+  select(!`2010`:`2019`)
+State_count4<-State %>%
+  filter(Offence == "Manslaughter")%>%
+  pivot_wider(id_cols = State,  
+              names_from = Year,  
+              values_from = Count)%>%
+  mutate("Manslaughter_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+  mutate("Manslaughter_change" = (`2019` - `2010`))%>%
+  select(!`2010`:`2019`)
+State_count5<-State %>%
+  filter(Offence == "Kidnapping/abduction")%>%
+  pivot_wider(id_cols = State,  
+              names_from = Year,  
+              values_from = Count)%>%
+  mutate("Kidnapping_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+   mutate("Kidnapping_change" = (`2019` - `2010`))%>%
+  select(!`2010`:`2019`)
+State_count6<-State %>%
+  filter(Offence == "Blackmail/extortion")%>%
+  pivot_wider(id_cols = State,  
+              names_from = Year,  
+              values_from = Count)%>%
+  mutate("extortion_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+    mutate("extortion_change" = (`2019` - `2010`))%>%
+  select(!`2010`:`2019`)
+
+```
+
+
+```{r table1,fig.height = 4 , fig.width=6}
+state_sum1<-merge(State_count1,State_count2, by= 'State')
+state_sum<-merge(State_count3,state_sum1, by= 'State')
+knitr::kable(state_sum,caption = 'Ten-year rate of change in the number of victims of various crimes by state',booktabs = TRUE)%>%
+   kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+```{r table2}
+state_sum2<-merge(State_count4,State_count5, by= 'State')
+state_sum3<-merge(State_count6,state_sum2,by= 'State')
+knitr::kable(state_sum3,caption = 'Ten-year rate of change in the number of victims of various crimes by state',booktabs = TRUE)%>%
+   kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+Table \@ref(tab:table1) and Table \@ref(tab:table2) show the ten-year change and rate of change in the number of victims of the above six types of crime. Sexual assault was the only crime category in which victims increased in all states, with increases of 51.45 per cent in New South Wales, 67.4 per cent in Western Australia, 60.6 per cent in Victoria and 69.4 per cent in the Australian Capital Territory. Victoria was also the only state to see an increase in the number of victims of all six types of crime.
+
+```{r plot3,fig.height = 5 ,fig.width=7,fig.cap="The rate of change in the rate of various crime victims by state"}
+State_rate %>%
+  filter(Offence == "Sexual assault")%>%
+  ggplot(aes( x = Year,     
+              y = Rate, 
+              color = State,
+              group = State)) + 
+  geom_line(stat = "identity")  +
+  ylab("rate-Victims per 100,000")+
+  theme(axis.title.x =element_text(size=14), axis.title.y=element_text(size=14)) +
+   ggtitle("Rate of change in the number of victims of various crimes by state") 
+```
+
+Since sexual assault is the most victimized crime category and the only one with a 10-year increase in the number of victims in all eight states, we will look at it separately.
+
+Figure \@ref(fig:plot3) shows how the rate of victims of sexual assault (the number of victims per 100,000 people) changed in eight states from 2010 to 2019. New South Wales had the highest rate of victims, while Tasmania had the lowest. Rates of sexual assault victims fluctuated in most states.
+
+
+```{r table3}
+State_rate1<-State_rate %>%
+  filter(Offence == "Sexual assault")%>%
+  pivot_wider(id_cols = State,  
+              names_from = Year,  
+              values_from = Rate)%>%
+  mutate("2010-2011" = (`2019` - `2010`))%>%
+  mutate("rate_change" =  ((`2019` - `2010`)/`2010`)*100)%>%
+  select(!`2010`:`2019`)
+ knitr::kable(
+State_rate1, booktabs = TRUE,
+  caption = 'A 10-year change in the proportion of victims of sexual assault')%>%
+   kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+Table \@ref(tab:table3) shows the change of the proportion of victims of sexual assault in all states. Except Queensland, the proportion of victims in all states is increasing. The increase of the proportion of victims in Western Australia, Northern Territory, Australian Capital Territory is more than 40%. Western Australia saw the highest increase of 46.3%.
+
+Based on the above analysis, we can conclude that the state with the most victims among the eight states is New South Wales, and the type of crime with the most victims is sexual assault. The number of victims of sexual assault in each state has increased over the past 10 years, and Western Australia has even increased by 46.3%. Only Queensland has a decrease in the number of victims of sexual assault, which shows that Queensland attaches importance to such crimes.
 
 
 \section*{Gender}
 
 
 \section*{Age}
-
-

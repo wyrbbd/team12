@@ -286,6 +286,20 @@
 
 %% Any special functions or other packages can be loaded here.
 \usepackage{float} \floatplacement{figure}{H} \floatplacement{table}{H}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 
 
 \begin{document}
@@ -293,7 +307,102 @@
 
 \section*{State}
 
+In this section, the number of victims of various crimes in eight Australian states and the number (and rate) of victims per 100,000 people will be analyzed from 2010 to 2019, and the types of crimes with the most victims will be analyzed.
+
+\begin{figure}
+\centering
 \includegraphics{report_files/figure-latex/plot1-1.pdf}
+\caption{\label{fig:plot1}Comparison of the number of victims of various crimes in each state in the same year}
+\end{figure}
+
+As can be clearly seen in Figure \ref{fig:plot1}, the number of victims of sexual assault and armed robbery was the largest in the same year.
+
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/plot2-1.pdf}
+\caption{\label{fig:plot2}Rate of change in the number of victims of various crimes by state}
+\end{figure}
+
+Figure \ref{fig:plot2} shows the change in the number of crime victims by state over 10 years.Sexual assault and armed robbery are the most victimized crime categories in every state, while other crimes are victimized in relatively small numbers.
+
+\begin{table}
+
+\caption{\label{tab:table1}Ten-year rate of change in the number of victims of various crimes by state}
+\centering
+\begin{tabular}[t]{lrrrrrr}
+\toprule
+State & robbery\_rate & robbery\_change & Sexual assault\_rate & Sexual assault\_change & Murder\_rate & Murder\_change\\
+\midrule
+Capital & -19.867550 & -30 & 69.430052 & 134 & -100.000000 & -3\\
+NewSouthWales & -43.953488 & -945 & 51.451369 & 3740 & 4.109589 & 3\\
+Northern Territory & 43.478261 & 20 & 7.926829 & 26 & -9.090909 & -1\\
+Queensland & 73.246753 & 564 & 14.626091 & 620 & -2.083333 & -1\\
+South Australia & -34.482759 & -180 & 13.719736 & 187 & -33.333333 & -5\\
+\addlinespace
+Tasmania & 1.176471 & 1 & 9.604520 & 17 & -33.333333 & -2\\
+Victoria & 40.751043 & 586 & 60.622761 & 2200 & 19.148936 & 9\\
+Western Australia & 13.358071 & 72 & 67.412334 & 1115 & -10.000000 & -3\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:table2}Ten-year rate of change in the number of victims of various crimes by state}
+\centering
+\begin{tabular}[t]{lrrrrrr}
+\toprule
+State & extortion\_rate & extortion\_change & Manslaughter\_rate & Manslaughter\_change & Kidnapping\_rate & Kidnapping\_change\\
+\midrule
+Capital & Inf & 6 & NaN & 0 & Inf & 7\\
+NewSouthWales & -46.24277 & -80 & 18.18182 & 2 & -31.610942 & -104\\
+Northern Territory & Inf & 3 & -100.00000 & -3 & NaN & 0\\
+Queensland & 108.69565 & 50 & -57.14286 & -4 & -13.235294 & -9\\
+South Australia & 96.77419 & 30 & NaN & 0 & -9.230769 & -6\\
+\addlinespace
+Tasmania & NaN & 0 & NaN & 0 & Inf & 3\\
+Victoria & 43.06569 & 59 & 366.66667 & 11 & 36.206897 & 42\\
+Western Australia & 20.00000 & 18 & 0.00000 & 0 & 21.052632 & 4\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table \ref{tab:table1} and Table \ref{tab:table2} show the ten-year change and rate of change in the number of victims of the above six types of crime. Sexual assault was the only crime category in which victims increased in all states, with increases of 51.45 per cent in New South Wales, 67.4 per cent in Western Australia, 60.6 per cent in Victoria and 69.4 per cent in the Australian Capital Territory. Victoria was also the only state to see an increase in the number of victims of all six types of crime.
+
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/plot3-1.pdf}
+\caption{\label{fig:plot3}The rate of change in the rate of various crime victims by state}
+\end{figure}
+
+Since sexual assault is the most victimized crime category and the only one with a 10-year increase in the number of victims in all eight states, we will look at it separately.
+
+Figure \ref{fig:plot3} shows how the rate of victims of sexual assault (the number of victims per 100,000 people) changed in eight states from 2010 to 2019. New South Wales had the highest rate of victims, while Tasmania had the lowest. Rates of sexual assault victims fluctuated in most states.
+
+\begin{table}
+
+\caption{\label{tab:table3}A 10-year change in the proportion of victims of sexual assault}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+State & 2010-2011 & rate\_change\\
+\midrule
+NewSouthWales & 34.4 & 33.8249754\\
+Victoria & 21.9 & 32.9323308\\
+Queensland & -0.8 & -0.8316008\\
+South Australia & 4.7 & 5.6085919\\
+Western Australia & 33.4 & 46.2603878\\
+\addlinespace
+Tasmania & 1.5 & 4.3103448\\
+Northern Territory & 23.3 & 43.7148218\\
+Capital & 23.3 & 43.7148218\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table \ref{tab:table3} shows the change of the proportion of victims of sexual assault in all states. Except Queensland, the proportion of victims in all states is increasing. The increase of the proportion of victims in Western Australia, Northern Territory, Australian Capital Territory is more than 40\%. Western Australia saw the highest increase of 46.3\%.
+
+Based on the above analysis, we can conclude that the state with the most victims among the eight states is New South Wales, and the type of crime with the most victims is sexual assault. The number of victims of sexual assault in each state has increased over the past 10 years, and Western Australia has even increased by 46.3\%. Only Queensland has a decrease in the number of victims of sexual assault, which shows that Queensland attaches importance to such crimes.
 
 \section*{Gender}
 

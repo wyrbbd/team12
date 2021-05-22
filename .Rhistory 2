@@ -1,0 +1,512 @@
+mutate("2012-2013" = ((`2012` - `2013`)/`2012`)*100)%>%
+mutate("2013-2014" = ((`2013` - `2014`)/`2013`)*100)%>%
+mutate("2014-2015" = ((`2014` - `2015`)/`2014`)*100)%>%
+mutate("2015-2016" = ((`2015` - `2016`)/`2015`)*100)%>%
+mutate("2011-2012" = ((`2016` - `2017`)/`2016`)*100)%>%
+mutate("2011-2012" = ((`2017` - `2018`)/`2017`)*100)%>%
+mutate("2011-2012" = ((`2018` - `2019`)/`2018`)*100)%>%
+select(!`2010`:`2019`)
+knitr::kable(
+State_rate1, booktabs = TRUE,
+caption = 'Increased rate of change')%>%
+kable_styling(bootstrap_options = c("striped", "hover"))
+State_rate1<-State_rate %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Rate)%>%
+mutate("2010-2011" = ((`2010` - `2019`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+knitr::kable(
+State_rate1, booktabs = TRUE,
+caption = 'Increased rate of change')%>%
+kable_styling(bootstrap_options = c("striped", "hover"))
+State_rate1<-State_rate %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Rate)%>%
+mutate("2010-2011" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+knitr::kable(
+State_rate1, booktabs = TRUE,
+caption = 'Increased rate of change')%>%
+kable_styling(bootstrap_options = c("striped", "hover"))
+State_rate1<-State_rate %>%
+filter(Offence == "Armed robbery")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Rate)%>%
+mutate("2010-2011" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_rate2<-State_rate %>%
+filter(Offence == "Armed robbery")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Rate)%>%
+mutate("2010-2011" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State %>%
+ggplot(aes(x = Offence,
+y = Count,
+fill = State))+
+geom_bar(stat  = "identity", position = "dodge") +
+geom_text(aes(label=Count), vjust=0.8, color="black", size=3.5)+
+theme (axis.text.x = element_text(angle = 0, vjust = 0.5, hjust=1))+
+guides(fill=FALSE)+
+ggtitle("Comparison of the number of victims of various crimes in each state in the same year") +
+facet_wrap(~Year, ncol = 1,scales= "free")
+State %>%
+ggplot(aes(x = Offence,
+y = Count,
+fill = State))+
+geom_bar(stat  = "identity", position = "dodge") +
+ggtitle("Comparison of the number of victims of various crimes in each state in the same year") +
+facet_wrap(~Year, ncol = 1,scales= "free")
+State <- bind_rows(NewSouthWales,Victoria,Queensland,South_Australia,Western_Australia,Tasmania,Northern_Territory,Capital)
+State <- bind_rows(NewSouthWales,Victoria,Queensland,South_Australia,Western_Australia,Tasmania,Northern_Territory,Capital)
+State
+show <-State%>%
+filter(Offence = "Sexual assault","Armed robbery")
+show <-State%>%
+filter(Offence == "Sexual assault","Armed robbery")
+show <-State%>%
+filter(Offence == "Sexual assault")
+View(show)
+View(State)
+State_count1<-State %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("2010-2011" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+View(State_count1)
+View(State_count1)
+State_count1<-State %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Sexual assault" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count1<-State %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Sexual assault" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count2<-State %>%
+filter(Offence == "Murder")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Murder" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count3<-State %>%
+filter(Offence == "Armed robbery")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Armed robbery" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count4<-State %>%
+filter(Offence == "Manslaughter")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Manslaughter" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count5<-State %>%
+filter(Offence == "Kidnapping/abduction")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Kidnapping/abduction" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count6<-State %>%
+filter(Offence == "Blackmail/extortion")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Blackmail/extortion" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+state_count<-merge(State_count1,State_count2,State_count3,State_count4,State_count5,State_count6, by= "State")
+State_count1<-State %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Sexual assault" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count2<-State %>%
+filter(Offence == "Murder")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Murder" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count3<-State %>%
+filter(Offence == "Armed robbery")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Armed robbery" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count4<-State %>%
+filter(Offence == "Manslaughter")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Manslaughter" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count5<-State %>%
+filter(Offence == "Kidnapping/abduction")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Kidnapping/abduction" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count6<-State %>%
+filter(Offence == "Blackmail/extortion")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Blackmail/extortion" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+state_count<-merge(State_count1,State_count2,State_count3,State_count4,State_count5,State_count6, by= State)
+State_count1<-State %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Sexual assault" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count2<-State %>%
+filter(Offence == "Murder")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Murder" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count3<-State %>%
+filter(Offence == "Armed robbery")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Armed robbery" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count4<-State %>%
+filter(Offence == "Manslaughter")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Manslaughter" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count5<-State %>%
+filter(Offence == "Kidnapping/abduction")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Kidnapping/abduction" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count6<-State %>%
+filter(Offence == "Blackmail/extortion")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Blackmail/extortion" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+state_count<-merge(State_count1,State_count2, by= State)
+State_count1<-State %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Sexual assault" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count2<-State %>%
+filter(Offence == "Murder")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Murder" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count3<-State %>%
+filter(Offence == "Armed robbery")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Armed robbery" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count4<-State %>%
+filter(Offence == "Manslaughter")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Manslaughter" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count5<-State %>%
+filter(Offence == "Kidnapping/abduction")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Kidnapping/abduction" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count6<-State %>%
+filter(Offence == "Blackmail/extortion")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Blackmail/extortion" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+state_sum1<-merge(State_count1,State_count2, by= State)
+View(State_count5)
+View(Tasmania)
+View(State_count5)
+View(State_count4)
+View(State_count3)
+View(State_count2)
+View(State_count3)
+state_sum1<-merge(State_count1,State_count2, by= State)
+state_sum1<-merge(State_count1,State_count2, by= 'State')
+state_sum1<-merge(State_count1,State_count2, by= 'State')
+state_sum2<-merge(State_count3,State_count4, by= 'State')
+state_sum1<-merge(State_count1,State_count2, by= 'State')
+state_sum2<-merge(State_count3,State_count4, by= 'State')
+state_sum3<-merge(State_count5,State_count6, by= 'State')
+state_sum4<-merge(state_sum1,state_sum2,by= 'State')
+state_sum<-merge(state_sum4,state_sum3,by= 'State')
+View(state_sum)
+View(Capital)
+View(NewSouthWales)
+View(Tasmania)
+View(Victoria)
+View(Capital)
+View(Capital)
+State_count1<-State %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Sexual assault" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count2<-State %>%
+filter(Offence == "Murder")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Murder" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count3<-State %>%
+filter(Offence == "Armed robbery")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Armed robbery" = ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+State_count4<-State %>%
+filter(Offence == "Manslaughter")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Manslaughter" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Manslaughter_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count5<-State %>%
+filter(Offence == "Kidnapping/abduction")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Kidnapping/abduction" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Kidnapping/abduction_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count6<-State %>%
+filter(Offence == "Blackmail/extortion")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Blackmail/extortion" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Blackmail/extortion_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+state_sum1<-merge(State_count1,State_count2, by= 'State')
+state_sum2<-merge(State_count3,State_count4, by= 'State')
+state_sum3<-merge(State_count5,State_count6, by= 'State')
+state_sum4<-merge(state_sum1,state_sum2,by= 'State')
+state_sum<-merge(state_sum4,state_sum3,by= 'State')
+knitr::kable(
+state_sum, booktabs = TRUE,
+caption = 'Reduce the period change rate')%>%
+kable_styling(bootstrap_options = c("striped", "hover"))
+state_sum1<-merge(State_count1,State_count2, by= 'State')
+state_sum2<-merge(State_count3,State_count4, by= 'State')
+state_sum3<-merge(State_count5,State_count6, by= 'State')
+state_sum4<-merge(state_sum1,state_sum2,by= 'State')
+state_sum<-merge(state_sum4,state_sum3,by= 'State')
+knitr::kable(
+state_sum, booktabs = TRUE,
+caption = 'Ten-year rate of change in the number of victims of various crimes by state')%>%
+kable_styling(bootstrap_options = c("striped", "hover"))
+State_count1<-State %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Sexual assault" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Sexual assault_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count2<-State %>%
+filter(Offence == "Murder")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Murder" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Murder_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count3<-State %>%
+filter(Offence == "Armed robbery")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Armed robbery" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Armed robbery_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count4<-State %>%
+filter(Offence == "Manslaughter")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Manslaughter" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Manslaughter_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count5<-State %>%
+filter(Offence == "Kidnapping/abduction")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Kidnapping/abduction" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Kidnapping/abduction_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count6<-State %>%
+filter(Offence == "Blackmail/extortion")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Blackmail/extortion" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Blackmail/extortion_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+state_sum1<-merge(State_count1,State_count2, by= 'State')
+state_sum2<-merge(State_count3,State_count4, by= 'State')
+state_sum3<-merge(State_count5,State_count6, by= 'State')
+state_sum4<-merge(state_sum1,state_sum2,by= 'State')
+state_sum<-merge(state_sum4,state_sum3,by= 'State')
+knitr::kable(
+state_sum, booktabs = TRUE,
+caption = 'Ten-year rate of change in the number of victims of various crimes by state')%>%
+kable_styling(bootstrap_options = c("striped", "hover"))
+State_rate1<-State_rate %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Rate)%>%
+mutate("2010-2011" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("rate_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+knitr::kable(
+State_rate1, booktabs = TRUE,
+caption = 'Increased rate of change')%>%
+kable_styling(bootstrap_options = c("striped", "hover"))
+State_rate1<-State_rate %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Rate)%>%
+mutate("2010-2011" = (`2019` - `2010`))%>%
+mutate("rate_change" =  ((`2019` - `2010`)/`2010`)*100)%>%
+select(!`2010`:`2019`)
+knitr::kable(
+State_rate1, booktabs = TRUE,
+caption = 'Increased rate of change')%>%
+kable_styling(bootstrap_options = c("striped", "hover"))
+State_count1<-State %>%
+filter(Offence == "Sexual assault")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Sexual assault_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Sexual assault_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count2<-State %>%
+filter(Offence == "Murder")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Murder_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Murder_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count3<-State %>%
+filter(Offence == "Armed robbery")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Armed robbery_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Armed robbery_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count4<-State %>%
+filter(Offence == "Manslaughter")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Manslaughter_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Manslaughter_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count5<-State %>%
+filter(Offence == "Kidnapping/abduction")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Kidnapping/abduction_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Kidnapping/abduction_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+State_count6<-State %>%
+filter(Offence == "Blackmail/extortion")%>%
+pivot_wider(id_cols = State,
+names_from = Year,
+values_from = Count)%>%
+mutate("Blackmail/extortion_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+mutate("Blackmail/extortion_change" = (`2019` - `2010`))%>%
+select(!`2010`:`2019`)
+state_sum1<-merge(State_count1,State_count2, by= 'State')
+state_sum2<-merge(State_count3,State_count4, by= 'State')
+state_sum3<-merge(State_count5,State_count6, by= 'State')
+state_sum4<-merge(state_sum1,state_sum2,by= 'State')
+state_sum<-merge(state_sum4,state_sum3,by= 'State')
+knitr::kable(
+state_sum, booktabs = TRUE,
+caption = 'Ten-year rate of change in the number of victims of various crimes by state')%>%
+kable_styling(bootstrap_options = c("striped", "hover"))
+State_rate %>%
+filter(Offence == "Sexual assault")%>%
+ggplot(aes( x = Year,
+y = Rate,
+color = State,
+group = State)) +
+geom_line(stat = "identity")  +
+ylab("rate-Victims per 100,000")
+theme(axis.title.x =element_text(size=14), axis.title.y=element_text(size=14)) +
+ggtitle("Rate of change in the number of victims of various crimes by state")
+State_rate %>%
+filter(Offence == "Sexual assault")%>%
+ggplot(aes( x = Year,
+y = Rate,
+color = State,
+group = State)) +
+geom_line(stat = "identity")  +
+ylab("rate-Victims per 100,000")+
+theme(axis.title.x =element_text(size=14), axis.title.y=element_text(size=14)) +
+ggtitle("Rate of change in the number of victims of various crimes by state")
+tinytex::install_tinytex()
+install.packages("tinytex")
+install.packages("tinytex")
+tinytex::install_tinytex()
