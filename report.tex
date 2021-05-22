@@ -21,7 +21,7 @@
 \PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
 \usepackage[unicode=true]{hyperref}
 \hypersetup{
-            pdftitle={Please select your title},
+            pdftitle={Report},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -29,6 +29,46 @@
 \geometry{a4paper, centering, text={16cm,24cm}}
 \usepackage[style=authoryear-comp,]{biblatex}
 \addbibresource{references.bib}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 % Fix footnotes in tables (requires footnote package)
 \IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
@@ -49,7 +89,7 @@
 \makeatother
 
 
-\title{Please select your title}
+\title{Report}
 
 %% MONASH STUFF
 
@@ -190,11 +230,11 @@
 \DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
 \makeatother
 
-\author{\sf\Large\textbf{ XXX XXXX}\\ {\sf\large XXX\\[0.5cm]} \sf\Large\textbf{ Reports XXXX}\\ {\sf\large XXX\\[0.5cm]} \sf\Large\textbf{ XXX XXX}\\ {\sf\large XXX\\[0.5cm]}}
+\author{\sf\Large\textbf{ Yiru Wang}\\ {\sf\large section1\\[0.5cm]} \sf\Large\textbf{ Kexin Xu}\\ {\sf\large section2\\[0.5cm]} \sf\Large\textbf{ Ruiqi Tang}\\ {\sf\large section3\\[0.5cm]}}
 
 \date{\sf\Date~\Month~\Year}
 \makeatletter
-\lfoot{\sf XXXX, XXXX, XXX: \@date}
+\lfoot{\sf Wang, Xu, Tang: \@date}
 \makeatother
 
 
@@ -207,7 +247,7 @@
 \makeatother
   \organization{Australian Government COVID19}
 
-  \def\name{Our consultancy \newline add names \&\newline add names}
+  \def\name{Our consultancy \newline Yiru Wang \&\newline Kexin XU \&\newline Ruiqi Tang}
 
   \telephone{(03) 9905 2478}
 
@@ -276,32 +316,48 @@
 \setstretch{1.5}
 
 %% Any special functions or other packages can be loaded here.
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
+\usepackage{float} \floatplacement{figure}{H} \floatplacement{table}{H}
 
 
 \begin{document}
 \titlepage
 
-\section*{Country XX1 and YY1"}
+\section*{State}
 
-\section*{Country XX2 and YY2}
+\section*{Gender}
 
-\section*{Country XX3 and YY3}
+\section*{Age}
+
+\begin{center}\includegraphics[width=0.5\linewidth]{report_files/figure-latex/Homicide-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Armed\_robbery }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \StringTok{\textquotesingle{}2010\textquotesingle{}}\SpecialCharTok{:}\StringTok{\textquotesingle{}2019\textquotesingle{}}\NormalTok{,  }
+                \AttributeTok{names\_to =} \StringTok{"Year"}\NormalTok{,            }
+                \AttributeTok{values\_to =} \StringTok{"Count"}\NormalTok{) }\OtherTok{{-}\textgreater{}}\NormalTok{ AR\_longer}
+
+\NormalTok{AR\_longer }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{id\_cols =} \FunctionTok{c}\NormalTok{(age, Year, Count), }\AttributeTok{names\_from =}\NormalTok{ age, }\AttributeTok{values\_from =}\NormalTok{ Count) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Year =} \FunctionTok{as\_factor}\NormalTok{(Year)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{class =} \StringTok{"Armed\_robbery"}\NormalTok{) }\OtherTok{{-}\textgreater{}}\NormalTok{ AR\_wider}
+
+
+\NormalTok{AR\_longer }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(age) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{sum =} \FunctionTok{sum}\NormalTok{(Count)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{class =} \StringTok{"Armed\_robbery"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(age }\SpecialCharTok{!=} \StringTok{"Total"}\NormalTok{) }\OtherTok{{-}\textgreater{}}\NormalTok{ AR\_age}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.5\linewidth]{report_files/figure-latex/graph-1} \end{center}
+
+\begin{center}\includegraphics[width=0.5\linewidth]{report_files/figure-latex/graph-2} \end{center}
+
+from graph, we can see that Sexual assauslt is the largest part, compared with other class
+From the graph, we can see that the people who are 35-54 have bigger probability to has crimal recod
 
 \printbibliography
 
 \end{document}
-

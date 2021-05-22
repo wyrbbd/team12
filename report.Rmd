@@ -67,7 +67,7 @@ library(readxl)
 
 \section*{Age}
 
-```{r, message=FALSE}
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
 Homicide <- read_excel("data/Victims_of_Crime_Australia.xls", 
     sheet = "Table 2", range = anchored("A20", dim = c(6,11))) 
 colnames(Homicide) <- c("age" ,2010, 2011, 2012, 2013,	2014,	2015,	2016,	2017,	2018,	2019)
@@ -119,7 +119,7 @@ colnames(Blackmail_extortion) <- c("age" ,2010, 2011, 2012, 2013,	2014,	2015,	20
 ```
 
 
-```{r Homicide}
+```{r Homicide, echo = FALSE, message = FALSE, warning = FALSE}
 Homicide %>%
  pivot_longer(cols = '2010':'2019',  
                 names_to = "Year",            
@@ -140,7 +140,7 @@ homicide_age %>%
   ggplot() + geom_col(aes(x= class, y = sum, fill = age))
 ```
 
-```{r}
+```{r Murder, echo = FALSE, message = FALSE, warning = FALSE}
 Murder %>%
 pivot_longer(cols = '2010':'2019',  
                 names_to = "Year",            
@@ -158,7 +158,7 @@ murder_longer %>%
   filter(age != "Total") -> murder_age
 ```
 
-```{r Attempted_murder}
+```{r Attempted_murder, echo = FALSE, message = FALSE, warning = FALSE}
 Attempted_murder %>%
   pivot_longer(cols = '2010':'2019',  
                 names_to = "Year",            
@@ -176,7 +176,7 @@ AM_longer %>%
   filter(age != "Total") -> am_age
 ```
 
-```{r Manslaughter}
+```{r Manslaughter, echo = FALSE, message = FALSE, warning = FALSE}
 Manslaughter %>%
   pivot_longer(cols = '2010':'2019',  
                 names_to = "Year",            
@@ -194,7 +194,7 @@ AM_longer %>%
   filter(age != "Total") -> manslaughter_age
 ```
 
-```{r}
+```{r Sexual_assault, echo = FALSE, message = FALSE, warning = FALSE}
 Sexual_assault %>%
   pivot_longer(cols = '2010':'2019',  
                 names_to = "Year",            
@@ -212,7 +212,7 @@ SA_longer %>%
   filter(age != "Total") -> SA_age
 ```
 
-```{r Kidnapping_abduction}
+```{r Kidnapping_abduction, echo = FALSE, message = FALSE, warning = FALSE}
 Kidnapping_abduction %>%
   pivot_longer(cols = '2010':'2019',  
                 names_to = "Year",            
@@ -225,7 +225,7 @@ ka_longer %>%
   filter(age != "Total") -> ka_age
 ```
 
-```{r Robber}
+```{r Robber, echo = FALSE, message = FALSE, warning = FALSE}
 Robbery %>%
    pivot_longer(cols = '2010':'2019',  
                 names_to = "Year",            
@@ -254,6 +254,7 @@ AR_longer %>%
   mutate(Year = as_factor(Year)) %>%
   mutate(class = "Armed_robbery") -> AR_wider
 
+
 AR_longer %>%
   group_by(age) %>%
   summarise(sum = sum(Count)) %>%
@@ -261,7 +262,7 @@ AR_longer %>%
   filter(age != "Total") -> AR_age
 ```
 
-```{r Unarmed_robbery}
+```{r Unarmed_robbery, echo = FALSE, message = FALSE, warning = FALSE}
 Unarmed_robbery %>%
   pivot_longer(cols = '2010':'2019',  
                 names_to = "Year",            
@@ -279,7 +280,7 @@ UR_longer %>%
   filter(age != "Total") -> UR_age
 ```
 
-```{r Unarmed}
+```{r Unarmed, echo = FALSE, message = FALSE, warning = FALSE}
 Unarmed_robbery %>%
   pivot_longer(cols = '2010':'2019',  
                 names_to = "Year",            
@@ -297,7 +298,7 @@ UR_longer %>%
   filter(age != "Total") -> UR_age
 ```
 
-```{r Blackmail_extortion}
+```{r Blackmail_extortion, echo = FALSE, message = FALSE, warning = FALSE}
 Blackmail_extortion %>%
   pivot_longer(cols = '2010':'2019',  
                 names_to = "Year",            
@@ -315,7 +316,7 @@ BE_longer %>%
   filter(age != "Total") -> BE_age
 ```
 
-```{r}
+```{r graph, echo = FALSE, message = FALSE, warning = FALSE}
 homicide_age %>%
   full_join(robbery_age, key = age, by = c("age", "sum", "class"))%>%
   full_join(ka_age, key = age, by = c("age", "sum", "class")) %>% 
@@ -333,4 +334,5 @@ data %>%
 data %>%
   ggplot() + geom_col(aes(x= class, y = sum, fill = age))
 ```
-
+from graph, we can see that Sexual assauslt is the largest part, compared with other class
+From the graph, we can see that the people who are 35-54 have bigger probability to has crimal recod
