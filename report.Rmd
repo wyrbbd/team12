@@ -29,8 +29,6 @@ output:
   bookdown::pdf_document2:
     template: monashreport2.tex
     fig_caption: yes
-    fig_height: 5
-    fig_width: 8
     includes:
       in_header: preamble.tex
     keep_tex: yes
@@ -44,7 +42,11 @@ header-includes:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.align = "center", out.width = "50%")
+knitr::opts_chunk$set(echo = FALSE, 
+                      eval = TRUE,
+                      cache=TRUE, 
+                      messages=FALSE, 
+                      warning=FALSE)
 ```
 
 
@@ -61,12 +63,16 @@ library(plotly)
 library(kableExtra)
 ```
 
+\clearpage
+
 \section*{State}
 
 
+\clearpage
+
 \section*{Gender}
 
-```{r echo=FALSE}
+```{r echo=FALSE, message = FALSE, warning = FALSE}
 Victims_of_Crime_raw <- readxl::read_excel("data/Victims_of_Crime_Australia.xls", sheet = 3, skip = 4, col_names = FALSE)
 Victims_of_Crime <- Victims_of_Crime_raw[-1,1:11]
 colnames(Victims_of_Crime) = Victims_of_Crime[1,]
@@ -152,7 +158,7 @@ Victims_of_Crime_tidy <- bind_rows(Homicide, Murder, Attemptedmurder, Manslaught
          !Type == "Robbery")
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.height=10, fig.width=11, message = FALSE, warning = FALSE}
 g <- Victims_of_Crime_tidy %>% 
   group_by(Year, Gender) %>%
   summarise(sum = sum(Number)) %>% 
@@ -170,7 +176,7 @@ g
 * The number of female victims is much higher than that of male victims, almost twice.
 
 
-```{r fig.height = 8, echo=FALSE}
+```{r echo=FALSE, message = FALSE, warning = FALSE}
 Victims_of_Crime_tidy %>% 
   ggplot() +
   geom_col(aes(x = Year,
@@ -195,7 +201,7 @@ According to statistics of gender-specific crimes in various countries, male vic
 
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, message = FALSE, warning = FALSE}
 Victims_of_Crime_sum <- Victims_of_Crime_tidy %>% 
   filter(!Gender == "All") %>% 
   group_by(Gender, Year) %>% 
@@ -214,7 +220,7 @@ Victims_of_Crime_tidy %>%
 Take sexual assault, female victims of sexual assault make up a very high proportion of total female victims.  
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, message = FALSE, warning = FALSE}
 Victims_of_Crime1 <- Victims_of_Crime_raw[-1,c(1, 12:21)]
 colnames(Victims_of_Crime1) = Victims_of_Crime1[1,]
 Victims_of_Crime1 <- Victims_of_Crime1[-1,]
@@ -240,7 +246,7 @@ Sexualassault_rate <- Sexualassault1 %>%
 
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, message = FALSE, warning = FALSE}
 sa <- Sexualassault_rate %>%
   ggplot() +
   geom_col(aes(x = Year,
@@ -248,9 +254,10 @@ sa <- Sexualassault_rate %>%
                fill = Gender),
                position = "dodge") +
   theme_bw() +
-  scale_fill_brewer(palette = "Dark2")
-
-ggplotly(sa)
+  scale_fill_brewer(palette = "Dark2") + 
+  theme(legend.position = "bottom")
+sa
+#ggplotly(sa)
 ```
 
 * Rate is calculated by victim number divided by 100,000 persons.
@@ -269,25 +276,7 @@ ABS personal safety survey also measures the number of women who contacted the p
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\clearpage
 
 \section*{Age}
 
