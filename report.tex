@@ -21,11 +21,7 @@
 \PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
 \usepackage[unicode=true]{hyperref}
 \hypersetup{
-<<<<<<< HEAD
             pdftitle={Report},
-=======
-            pdftitle={Please select your title},
->>>>>>> 379ced7eb80f55ae4bcab0f240c9e78a09a2ccca
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -36,7 +32,6 @@
 \usepackage{longtable,booktabs}
 % Fix footnotes in tables (requires footnote package)
 \IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
-<<<<<<< HEAD
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -46,8 +41,6 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-=======
->>>>>>> 379ced7eb80f55ae4bcab0f240c9e78a09a2ccca
 \IfFileExists{parskip.sty}{%
 \usepackage{parskip}
 }{% else
@@ -65,11 +58,7 @@
 \makeatother
 
 
-<<<<<<< HEAD
 \title{Report}
-=======
-\title{Please select your title}
->>>>>>> 379ced7eb80f55ae4bcab0f240c9e78a09a2ccca
 
 %% MONASH STUFF
 
@@ -210,19 +199,11 @@
 \DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
 \makeatother
 
-<<<<<<< HEAD
 \author{\sf\Large\textbf{ Yiru Wang}\\ {\sf\large section1\\[0.5cm]} \sf\Large\textbf{ Kexin Xu}\\ {\sf\large section2\\[0.5cm]} \sf\Large\textbf{ Ruiqi Tang}\\ {\sf\large section3\\[0.5cm]}}
 
 \date{\sf\Date~\Month~\Year}
 \makeatletter
 \lfoot{\sf Wang, Xu, Tang: \@date}
-=======
-\author{\sf\Large\textbf{ XXX XXXX}\\ {\sf\large XXX\\[0.5cm]} \sf\Large\textbf{ Reports XXXX}\\ {\sf\large XXX\\[0.5cm]} \sf\Large\textbf{ XXX XXX}\\ {\sf\large XXX\\[0.5cm]}}
-
-\date{\sf\Date~\Month~\Year}
-\makeatletter
-\lfoot{\sf XXXX, XXXX, XXX: \@date}
->>>>>>> 379ced7eb80f55ae4bcab0f240c9e78a09a2ccca
 \makeatother
 
 
@@ -235,11 +216,7 @@
 \makeatother
   \organization{Australian Government COVID19}
 
-<<<<<<< HEAD
   \def\name{Our consultancy \newline Yiru Wang \&\newline Kexin XU \&\newline Ruiqi Tang}
-=======
-  \def\name{Our consultancy \newline add names \&\newline add names}
->>>>>>> 379ced7eb80f55ae4bcab0f240c9e78a09a2ccca
 
   \telephone{(03) 9905 2478}
 
@@ -308,10 +285,7 @@
 \setstretch{1.5}
 
 %% Any special functions or other packages can be loaded here.
-<<<<<<< HEAD
 \usepackage{float} \floatplacement{figure}{H} \floatplacement{table}{H}
-=======
->>>>>>> 379ced7eb80f55ae4bcab0f240c9e78a09a2ccca
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -331,7 +305,13 @@
 \begin{document}
 \titlepage
 
-<<<<<<< HEAD
+=======
+library(plotly)
+library(kableExtra)
+```
+
+\clearpage
+
 \section*{State}
 
 In this section, the number of victims of various crimes in eight Australian states and the number (and rate) of victims per 100,000 people will be analyzed from 2010 to 2019, and the types of crimes with the most victims will be analyzed.
@@ -431,16 +411,138 @@ Table \ref{tab:table3} shows the change of the proportion of victims of sexual a
 
 Based on the above analysis, we can conclude that the state with the most victims among the eight states is New South Wales, and the type of crime with the most victims is sexual assault. The number of victims of sexual assault in each state has increased over the past 10 years, and Western Australia has even increased by 46.3\%. Only Queensland has a decrease in the number of victims of sexual assault, which shows that Queensland attaches importance to such crimes.
 
+\clearpage
+
 \section*{Gender}
 
+\includegraphics{report_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  On the whole, it shows an upward trend year by year recently.\\
+\item
+  The number of female victims is much higher than that of male victims, almost twice.
+\end{itemize}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  With the exception of sexual assault and kidnapping, the majority of victims are men.
+\item
+  The vast majority of cases are sexual assaults.\\
+\item
+  The number of robberies among the remaining crime categories is also considerable. (Including both armed and unarmed)\\
+\item
+  Possible reasons:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Women generally have stronger safety awareness
+  \item
+    Women are less likely to be seen alone at night in areas where they are likely to be robbed
+  \end{itemize}
+\end{itemize}
+
+According to statistics of gender-specific crimes in various countries, male victims are the majority in almost all crimes except for sex-related crimes in which more women are victims.
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-7}Sexual Assault Rate}
+\centering
+\begin{tabular}[t]{l|l|r}
+\hline
+Gender & Year & sa\_rate\\
+\hline
+Female & 2010 & 81.14353\\
+\hline
+Female & 2011 & 80.92590\\
+\hline
+Female & 2012 & 81.71220\\
+\hline
+Female & 2013 & 83.46100\\
+\hline
+Female & 2014 & 85.77439\\
+\hline
+Female & 2015 & 87.63073\\
+\hline
+Female & 2016 & 87.29571\\
+\hline
+Female & 2017 & 88.86702\\
+\hline
+Female & 2018 & 88.74093\\
+\hline
+Female & 2019 & 87.99638\\
+\hline
+Male & 2010 & 21.67991\\
+\hline
+Male & 2011 & 23.79634\\
+\hline
+Male & 2012 & 27.87459\\
+\hline
+Male & 2013 & 30.70995\\
+\hline
+Male & 2014 & 34.46328\\
+\hline
+Male & 2015 & 38.35306\\
+\hline
+Male & 2016 & 38.22735\\
+\hline
+Male & 2017 & 39.55563\\
+\hline
+Male & 2018 & 35.52154\\
+\hline
+Male & 2019 & 33.06397\\
+\hline
+\end{tabular}
+\end{table}
+
+Take sexual assault, female victims of sexual assault make up a very high proportion of total female victims.
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  Rate is calculated by victim number divided by 100,000 persons.
+\item
+  Show an upward pattern over years.
+\item
+  Higher than 0.15\% in recent years which means 3 out of every 2,000 people have been sexually assaulted.
+\item
+  Possible reasons:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Women are physically vulnerable
+  \item
+    Men are more sexually impulsive
+  \item
+    Many women may choose not to report the crime
+
+    \begin{itemize}
+    \tightlist
+    \item
+      relationship to the offender
+    \item
+      confidence in the justice system
+    \item
+      fear of revenge
+    \item
+      public opinion
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+ABS personal safety survey also measures the number of women who contacted the police about the most recent incident within the last 10 years. Only 13.4\% of women did so.
+
+\clearpage
+
 \section*{Age}
-=======
-\section*{Country XX1 and YY1"}
-
-\section*{Country XX2 and YY2}
-
-\section*{Country XX3 and YY3}
->>>>>>> 379ced7eb80f55ae4bcab0f240c9e78a09a2ccca
 
 \printbibliography
 

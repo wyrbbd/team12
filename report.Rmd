@@ -24,6 +24,7 @@ organization: Australian Government COVID19
 bibliography: references.bib
 biblio-style: authoryear-comp
 linestretch: 1.5
+always_allow_html: true
 output:
   bookdown::pdf_document2:
     template: monashreport2.tex
@@ -50,7 +51,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 
 
-```{r , echo = FALSE, message = FALSE, warning = FALSE}
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
 # Libraries
 library(tinytex)
 library(gridExtra)
@@ -61,13 +62,19 @@ library(knitr)
 library(readxl)
 library(haven)
 library(kableExtra)
+library(plotly)
 ```
 
+
+```
+
+\clearpage
 
 
 \section*{State}
 
 In this section, the number of victims of various crimes in eight Australian states and the number (and rate) of victims per 100,000 people will be analyzed from 2010 to 2019, and the types of crimes with the most victims will be analyzed.
+
 
 ```{r NewSouthWales}
 NewSouthWales <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 3,range = "A5:AB30")%>%
@@ -116,8 +123,6 @@ Victoria_rate <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sh
   filter(Offence %in%c("Murder","	
 Attempted murder","Manslaughter","Sexual assault","Kidnapping/abduction"))
 ```
-
-
 
 ```{r Queensland}
 Queensland <- read_excel("data/Victims_of_Crime_Extended_time_series.xls", sheet = 5,range = "A5:AB28")%>%
@@ -440,7 +445,216 @@ Table \@ref(tab:table3) shows the change of the proportion of victims of sexual 
 Based on the above analysis, we can conclude that the state with the most victims among the eight states is New South Wales, and the type of crime with the most victims is sexual assault. The number of victims of sexual assault in each state has increased over the past 10 years, and Western Australia has even increased by 46.3%. Only Queensland has a decrease in the number of victims of sexual assault, which shows that Queensland attaches importance to such crimes.
 
 
+\clearpage
+
 \section*{Gender}
+
+```{r echo=FALSE, message = FALSE, warning = FALSE}
+Victims_of_Crime_raw <- readxl::read_excel("data/Victims_of_Crime_Australia.xls", sheet = 3, skip = 4, col_names = FALSE)
+Victims_of_Crime <- Victims_of_Crime_raw[-1,1:11]
+colnames(Victims_of_Crime) = Victims_of_Crime[1,]
+Victims_of_Crime <- Victims_of_Crime[-1,]
+Homicide <- Victims_of_Crime[-1,] %>% 
+  slice(c(1:18)) %>% 
+  filter(`Sex and age` == "Total")
+Homicide[1,1] <- "Homicide_Male"
+Homicide[2,1] <- "Homicide_Female"
+Homicide[3,1] <- "Homicide_All"
+Homicide <- Homicide %>% rename("Type_Gender" = `Sex and age`)
+Murder <- Victims_of_Crime %>% 
+  slice(c(21:38)) %>% 
+  filter(`Sex and age` == "Total")
+Murder[1,1] <- "Murder_Male"
+Murder[2,1] <- "Murder_Female"
+Murder[3,1] <- "Murder_All"
+Murder <- Murder %>% rename("Type_Gender" = `Sex and age`)
+Attemptedmurder <- Victims_of_Crime %>% 
+  slice(c(40:57)) %>% 
+  filter(`Sex and age` == "Total")
+Attemptedmurder[1,1] <- "Attemptedmurder_Male"
+Attemptedmurder[2,1] <- "Attemptedmurder_Female"
+Attemptedmurder[3,1] <- "Attemptedmurder_All"
+Attemptedmurder <- Attemptedmurder %>% rename("Type_Gender" = `Sex and age`)
+Manslaughter <- Victims_of_Crime %>% 
+  slice(c(59:76)) %>% 
+  filter(`Sex and age` == "Total")
+Manslaughter[1,1] <- "Manslaughter_Male"
+Manslaughter[2,1] <- "Manslaughter_Female"
+Manslaughter[3,1] <- "Manslaughter_All"
+Manslaughter <- Manslaughter %>% rename("Type_Gender" = `Sex and age`)
+Sexualassault <- Victims_of_Crime %>% 
+  slice(c(78:110)) %>% 
+  filter(`Sex and age` == "Total")
+Sexualassault[1,1] <- "Sexualassault_Male"
+Sexualassault[2,1] <- "Sexualassault_Female"
+Sexualassault[3,1] <- "Sexualassault_All"
+Sexualassault <- Sexualassault %>% rename("Type_Gender" = `Sex and age`)
+Kidnappingabduction <- Victims_of_Crime %>% 
+  slice(c(112:141)) %>% 
+  filter(`Sex and age` == "Total")
+Kidnappingabduction[1,1] <- "Kidnappingabduction_Male"
+Kidnappingabduction[2,1] <- "Kidnappingabduction_Female"
+Kidnappingabduction[3,1] <- "Kidnappingabduction_All"
+Kidnappingabduction <- Kidnappingabduction %>% rename("Type_Gender" = `Sex and age`)
+Robbery <- Victims_of_Crime %>% 
+  slice(c(143:175)) %>% 
+  filter(`Sex and age` == "Total")
+Robbery[1,1] <- "Robbery_Male"
+Robbery[2,1] <- "Robbery_Female"
+Robbery[3,1] <- "Robbery_All"
+Robbery <- Robbery %>% rename("Type_Gender" = `Sex and age`)
+Armedrobbery <- Victims_of_Crime %>% 
+  slice(c(177:209)) %>% 
+  filter(`Sex and age` == "Total")
+Armedrobbery[1,1] <- "Armedrobbery_Male"
+Armedrobbery[2,1] <- "Armedrobbery_Female"
+Armedrobbery[3,1] <- "Armedrobbery_All"
+Armedrobbery <- Armedrobbery %>% rename("Type_Gender" = `Sex and age`)
+Unarmedrobbery <- Victims_of_Crime %>% 
+  slice(c(211:243)) %>% 
+  filter(`Sex and age` == "Total")
+Unarmedrobbery[1,1] <- "Unarmedrobbery_Male"
+Unarmedrobbery[2,1] <- "Unarmedrobbery_Female"
+Unarmedrobbery[3,1] <- "Unarmedrobbery_All"
+Unarmedrobbery <- Unarmedrobbery %>% rename("Type_Gender" = `Sex and age`)
+Blackmailextortion <- Victims_of_Crime %>% 
+  slice(c(245:274)) %>% 
+  filter(`Sex and age` == "Total")
+Blackmailextortion[1,1] <- "Blackmailextortion_Male"
+Blackmailextortion[2,1] <- "Blackmailextortion_Female"
+Blackmailextortion[3,1] <- "Blackmailextortion_All"
+Blackmailextortion <- Blackmailextortion %>% rename("Type_Gender" = `Sex and age`)
+Victims_of_Crime_tidy <- bind_rows(Homicide, Murder, Attemptedmurder, Manslaughter, Sexualassault, Kidnappingabduction, Robbery, Armedrobbery, Unarmedrobbery, Blackmailextortion) %>% 
+  mutate(`2010` = as.numeric(`2010`)) %>% 
+  pivot_longer(cols = -Type_Gender, 
+               names_to = "Year",
+               values_to = "Number") %>% 
+  separate(col = Type_Gender,
+           into = c("Type", "Gender"), "_") %>% 
+  filter(!Type == "Homicide",
+         !Type == "Robbery")
+```
+
+```{r echo=FALSE, fig.height=10, fig.width=11, message = FALSE, warning = FALSE}
+g <- Victims_of_Crime_tidy %>% 
+  group_by(Year, Gender) %>%
+  summarise(sum = sum(Number)) %>% 
+  ggplot(aes(x = Year,
+             y = sum,
+             color = Gender,
+             group = Gender)) +
+  geom_line() +
+  theme_bw()
+g
+#ggplotly(g)
+```
+
+* On the whole, it shows an upward trend year by year recently.  
+* The number of female victims is much higher than that of male victims, almost twice.
+
+
+```{r echo=FALSE, message = FALSE, warning = FALSE}
+Victims_of_Crime_tidy %>% 
+  ggplot() +
+  geom_col(aes(x = Year,
+                y = Number,
+                fill = Gender),
+           position = "dodge") +
+  facet_grid(Type~., scales = "free_y") +
+  scale_fill_brewer(palette = "Dark2") +
+  theme_bw()
+```
+
+* With the exception of sexual assault and kidnapping, the majority of victims are men.
+* The vast majority of cases are sexual assaults.  
+* The number of robberies among the remaining crime categories is also considerable. (Including both armed and unarmed)  
+* Possible reasons:
+  + Women generally have stronger safety awareness
+  + Women are less likely to be seen alone at night in areas where they are likely to be robbed  
+    
+According to statistics of gender-specific crimes in various countries, male victims are the majority in almost all crimes except for sex-related crimes in which more women are victims.
+
+
+
+
+
+```{r echo=FALSE, message = FALSE, warning = FALSE}
+Victims_of_Crime_sum <- Victims_of_Crime_tidy %>% 
+  filter(!Gender == "All") %>% 
+  group_by(Gender, Year) %>% 
+  summarise(sum = sum(Number))
+
+Victims_of_Crime_tidy %>% 
+  filter(Type == "Sexualassault" &
+         !Gender == "All") %>% 
+  left_join(Victims_of_Crime_sum) %>% 
+  group_by(Gender, Year) %>% 
+  summarise(sa_rate = Number/sum*100) %>% 
+  kable(caption = "Sexual Assault Rate") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+Take sexual assault, female victims of sexual assault make up a very high proportion of total female victims.  
+
+
+```{r echo=FALSE, message = FALSE, warning = FALSE}
+Victims_of_Crime1 <- Victims_of_Crime_raw[-1,c(1, 12:21)]
+colnames(Victims_of_Crime1) = Victims_of_Crime1[1,]
+Victims_of_Crime1 <- Victims_of_Crime1[-1,]
+
+Sexualassault1 <- Victims_of_Crime1 %>% 
+  slice(c(78:110)) %>% 
+  filter(`Sex and age` == "Total")
+Sexualassault1[1,1] <- "Sexualassault_Male"
+Sexualassault1[2,1] <- "Sexualassault_Female"
+Sexualassault1[3,1] <- "Sexualassault_All"
+Sexualassault1 <- Sexualassault1 %>% rename("Type_Gender" = `Sex and age`)
+
+Sexualassault_rate <- Sexualassault1 %>% 
+  mutate(`2010` = as.numeric(`2010`)) %>% 
+  pivot_longer(cols = -Type_Gender, 
+               names_to = "Year",
+               values_to = "Rate") %>% 
+  separate(col = Type_Gender,
+           into = c("Type", "Gender"), "_") %>% 
+  filter(!Gender == "All")
+```
+
+
+
+
+```{r echo=FALSE, message = FALSE, warning = FALSE}
+sa <- Sexualassault_rate %>%
+  ggplot() +
+  geom_col(aes(x = Year,
+               y = Rate,
+               fill = Gender),
+               position = "dodge") +
+  theme_bw() +
+  scale_fill_brewer(palette = "Dark2") + 
+  theme(legend.position = "bottom")
+sa
+#ggplotly(sa)
+```
+
+* Rate is calculated by victim number divided by 100,000 persons.
+* Show an upward pattern over years.
+* Higher than 0.15% in recent years which means 3 out of every 2,000 people have been sexually assaulted.
+* Possible reasons:
+  + Women are physically vulnerable
+  + Men are more sexually impulsive
+  + Many women may choose not to report the crime
+    - relationship to the offender
+    - confidence in the justice system
+    - fear of revenge
+    - public opinion  
+  
+ABS personal safety survey also measures the number of women who contacted the police about the most recent incident within the last 10 years. Only 13.4% of women did so. 
+
+
+
+\clearpage
+
 
 
 \section*{Age}
