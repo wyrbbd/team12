@@ -66,8 +66,6 @@ library(plotly)
 ```
 
 
-```
-
 \clearpage
 
 
