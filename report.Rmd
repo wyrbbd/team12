@@ -351,48 +351,48 @@ State_count1<-State %>%
   pivot_wider(id_cols = State,  
               names_from = Year,  
               values_from = Count)%>%
-  mutate("Sexual assault_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
-  mutate("Sexual assault_change" = (`2019` - `2010`))%>%
+  mutate("Sexual assault rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+  mutate("Sexual assault change" = (`2019` - `2010`))%>%
   select(!`2010`:`2019`)
 State_count2<-State %>%
   filter(Offence == "Murder")%>%
   pivot_wider(id_cols = State,  
               names_from = Year,  
               values_from = Count)%>%
-  mutate("Murder_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
-   mutate("Murder_change" = (`2019` - `2010`))%>%
+  mutate("Murder rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+   mutate("Murder change" = (`2019` - `2010`))%>%
   select(!`2010`:`2019`)
 State_count3<-State %>%
   filter(Offence == "Armed robbery")%>%
   pivot_wider(id_cols = State,  
               names_from = Year,  
               values_from = Count)%>%
-  mutate("robbery_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
-   mutate("robbery_change" = (`2019` - `2010`))%>%
+  mutate("robbery rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+   mutate("robbery change" = (`2019` - `2010`))%>%
   select(!`2010`:`2019`)
 State_count4<-State %>%
   filter(Offence == "Manslaughter")%>%
   pivot_wider(id_cols = State,  
               names_from = Year,  
               values_from = Count)%>%
-  mutate("Manslaughter_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
-  mutate("Manslaughter_change" = (`2019` - `2010`))%>%
+  mutate("Manslaughter rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+  mutate("Manslaughter change" = (`2019` - `2010`))%>%
   select(!`2010`:`2019`)
 State_count5<-State %>%
   filter(Offence == "Kidnapping/abduction")%>%
   pivot_wider(id_cols = State,  
               names_from = Year,  
               values_from = Count)%>%
-  mutate("Kidnapping_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
-   mutate("Kidnapping_change" = (`2019` - `2010`))%>%
+  mutate("Kidnapping rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+   mutate("Kidnapping change" = (`2019` - `2010`))%>%
   select(!`2010`:`2019`)
 State_count6<-State %>%
   filter(Offence == "Blackmail/extortion")%>%
   pivot_wider(id_cols = State,  
               names_from = Year,  
               values_from = Count)%>%
-  mutate("extortion_rate" = ((`2019` - `2010`)/`2010`)*100)%>%
-    mutate("extortion_change" = (`2019` - `2010`))%>%
+  mutate("extortion rate" = ((`2019` - `2010`)/`2010`)*100)%>%
+    mutate("extortion change" = (`2019` - `2010`))%>%
   select(!`2010`:`2019`)
 
 ```
@@ -455,6 +455,8 @@ Based on the above analysis, we can conclude that the state with the most victim
 \clearpage
 
 \section*{Gender}  
+
+In this section we are going to take a look at crimes across different genders.  
 ```{r echo=FALSE, message = FALSE, warning = FALSE}
 Victims_of_Crime_raw <- readxl::read_excel("data/Victims_of_Crime_Australia.xls", sheet = 3, skip = 4, col_names = FALSE)
 Victims_of_Crime <- Victims_of_Crime_raw[-1,1:11]
