@@ -21,7 +21,7 @@
 \PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
 \usepackage[unicode=true]{hyperref}
 \hypersetup{
-            pdftitle={Report},
+            pdftitle={Analysis of Australian victims from 2010 to 2019},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -58,7 +58,7 @@
 \makeatother
 
 
-\title{Report}
+\title{Analysis of Australian victims from 2010 to 2019}
 
 %% MONASH STUFF
 
@@ -286,6 +286,20 @@
 
 %% Any special functions or other packages can be loaded here.
 \usepackage{float} \floatplacement{figure}{H} \floatplacement{table}{H}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 
 
 \begin{document}
@@ -325,7 +339,7 @@ Figure \ref{fig:plot2} shows the change in the number of crime victims by state 
 
 \caption{\label{tab:table1}Ten-year rate of change in the number of victims of various crimes by state}
 \centering
-\begin{tabular}[t]{lrrrrrr}
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X}
 \toprule
 State & robbery\_rate & robbery\_change & Sexual assault\_rate & Sexual assault\_change & Murder\_rate & Murder\_change\\
 \midrule
@@ -339,14 +353,14 @@ Tasmania & 1.176471 & 1 & 9.604520 & 17 & -33.333333 & -2\\
 Victoria & 40.751043 & 586 & 60.622761 & 2200 & 19.148936 & 9\\
 Western Australia & 13.358071 & 72 & 67.412334 & 1115 & -10.000000 & -3\\
 \bottomrule
-\end{tabular}
+\end{tabu}
 \end{table}
 
 \begin{table}
 
 \caption{\label{tab:table2}Ten-year rate of change in the number of victims of various crimes by state}
 \centering
-\begin{tabular}[t]{lrrrrrr}
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X}
 \toprule
 State & extortion\_rate & extortion\_change & Manslaughter\_rate & Manslaughter\_change & Kidnapping\_rate & Kidnapping\_change\\
 \midrule
@@ -360,7 +374,7 @@ Tasmania & NaN & 0 & NaN & 0 & Inf & 3\\
 Victoria & 43.06569 & 59 & 366.66667 & 11 & 36.206897 & 42\\
 Western Australia & 20.00000 & 18 & 0.00000 & 0 & 21.052632 & 4\\
 \bottomrule
-\end{tabular}
+\end{tabu}
 \end{table}
 
 Table \ref{tab:table1} and Table \ref{tab:table2} show the ten-year change and rate of change in the number of victims of the above six types of crime. Sexual assault was the only crime category in which victims increased in all states, with increases of 51.45 per cent in New South Wales, 67.4 per cent in Western Australia, 60.6 per cent in Victoria and 69.4 per cent in the Australian Capital Territory. Victoria was also the only state to see an increase in the number of victims of all six types of crime.
@@ -532,16 +546,60 @@ ABS personal safety survey also measures the number of women who contacted the p
 
 \section*{Age}
 
-\includegraphics{report_files/figure-latex/Homicide-1.pdf}
+For my part, my main job is to investage the victims for the different age groups. I divide the age into four group, teenage, adult, elder adult, and elder. I will compare different class of victims for different groups
 
-\includegraphics{report_files/figure-latex/graph-1.pdf} \includegraphics{report_files/figure-latex/graph-2.pdf}
 from graph, we can see that Sexual assauslt is the largest part, compared with other class
 From the graph, we can see that the people who are 35-54 have bigger probability to has crimal recod
 
-\clearpage
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/ageplot-1.pdf}
+\caption{\label{fig:ageplot}Age group between 2010 to 2019}
+\end{figure}
 
+From \ref{fig:ageplot}, we can see that the trend for both teenage and adult is very similar. it has a decrease trend from 2010 to 2015. Then, it has a increse trend from 2015 to 2019. For the elder adult and elder, they have increase trend for all year.
+
+\begin{figure}
+\centering
+\includegraphics{report_files/figure-latex/agedist-1.pdf}
+\caption{\label{fig:agedist}Age in class}
+\end{figure}
+
+From \ref{fig:agedist}. we can see that 20-54 years age are the largest people for victims record. The 55 year and over are the smallest group.
+
+For all class of victims
+\includegraphics{report_files/figure-latex/class-1.pdf}
+
+The \ref{fig:class} shows that the the number of people committed Sexual is the largest
+
+Then, There are the each class victims
+
+\includegraphics{report_files/figure-latex/Homplot-1.pdf}
+
+\includegraphics{report_files/figure-latex/murplot-1.pdf}
+
+\includegraphics{report_files/figure-latex/attplot-1.pdf}
+
+\includegraphics{report_files/figure-latex/manplot-1.pdf}
+
+\includegraphics{report_files/figure-latex/sexplot-1.pdf}
+
+\includegraphics{report_files/figure-latex/kidplot-1.pdf}
+
+\includegraphics{report_files/figure-latex/rplot-1.pdf}
+
+\includegraphics{report_files/figure-latex/armplot-1.pdf}
+
+\includegraphics{report_files/figure-latex/unplot-1.pdf}
+
+\includegraphics{report_files/figure-latex/blaplot-1.pdf}
+
+\clearpage
 \section*{Conclusion}
 
+Our group just investage victims of various crimes in Australia from 2010 to 2019. We analysis in this topic in \textbf{State}, \textbf{Gender} and \textbf{Age}. Overall, We find that the number of crimes has increase in recent five years
+
+\clearpage
 \section*{References}
 
 \textbf{R packages}
