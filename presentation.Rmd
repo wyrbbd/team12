@@ -838,7 +838,7 @@ manslaughter_longer %>%
   mutate(Year = as_factor(Year)) %>%
   mutate(class = "Manslaughter") -> manslaughter_wider
 
-AM_longer %>%
+manslaughter_longer %>%
   group_by(age) %>%
   summarise(sum = sum(Count)) %>%
   mutate(class = "Manslaughter") %>%
@@ -1078,11 +1078,11 @@ AM_wider$`55 years and over`  + AR_wider$`55 years and over` + BE_wider$`55 year
 ### Age Group
 I divided age into four groups
 
-* 0 -19 years old Teenage
+* 0-19 years old Teenage
 
-* 20–34 years old Audlt
+* 20–34 years old Adult
 
-* 35–54 years old Elder audlt
+* 35–54 years old Elder Adult
 
 * 55 years and over Elder
 
@@ -1115,7 +1115,7 @@ Row {data-height=80}
 ----------------------------------
 ### Analysis
 
-From graph, we can see that the trend for both teenage and adult is very similar. it has a decrease trend from 2010 to 2015. Then, it has a increse trend from 2015 to 2019. For the elder adult and elder, they have increase trend for all year.
+From graph, we can see that the trend for both teenage and adult is very similar. it has a decrease trend from 2010 to 2015. Then, it has a increase trend from 2015 to 2019. For the elder adult and elder, they have increase trend for all year. It may be cause by the politics。
 
 Row 
 ----------------------------------
@@ -1131,7 +1131,7 @@ Row
 ----------------------------------
 ### Analysis
 
-From graph. we can see that 20-54 years age are the largest people for criminal record. The 55 year and over are the smallest group.
+From graph. we can see that 20-34 years age are the largest people for criminal record. The 55 year and over are the smallest group.
 
 
 Row 
@@ -1186,4 +1186,3 @@ Row
 ```{r}
 p10
 ```
-

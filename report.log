@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.5.28)  1 JUN 2021 23:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.5.28)  3 JUN 2021 22:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1726,105 +1726,68 @@ Missing character: There is no * in font mdbchr8c!
 File: report_files/figure-latex/ageplot-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/ageplot-1.pdf>
 Package pdftex.def Info: report_files/figure-latex/ageplot-1.pdf  used on input
- line 558.
+ line 555.
 (pdftex.def)             Requested size: 455.24165pt x 455.24165pt.
 <report_files/figure-latex/agedist-1.pdf, id=122, 578.16pt x 361.35pt>
 File: report_files/figure-latex/agedist-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/agedist-1.pdf>
 Package pdftex.def Info: report_files/figure-latex/agedist-1.pdf  used on input
- line 566.
+ line 563.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [13
 
  <./report_files/figure-latex/ageplot-1.pdf>]
-<report_files/figure-latex/class-1.pdf, id=135, 578.16pt x 361.35pt>
-File: report_files/figure-latex/class-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/class-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/class-1.pdf  used on input l
-ine 573.
+<report_files/figure-latex/classplot-1.pdf, id=135, 578.16pt x 361.35pt>
+File: report_files/figure-latex/classplot-1.pdf Graphic file (type pdf)
+<use report_files/figure-latex/classplot-1.pdf>
+Package pdftex.def Info: report_files/figure-latex/classplot-1.pdf  used on inp
+ut line 573.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
-
-Overfull \hbox (96.71877pt too wide) in paragraph at lines 572--574
-[]\T1/mdbch/m/n/10.95 (-20) For all class of vic-tims [] 
- []
-
 [14 <./report_files/figure-latex/agedist-1.pdf>]
-
-LaTeX Warning: Reference `fig:class' on page 15 undefined on input line 575.
-
-<report_files/figure-latex/Homplot-1.pdf, id=147, 361.35pt x 361.35pt>
-File: report_files/figure-latex/Homplot-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/Homplot-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/Homplot-1.pdf  used on input
- line 579.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[15 <./report_files/figure-latex/class-1.pdf>]
-<report_files/figure-latex/murplot-1.pdf, id=157, 361.35pt x 361.35pt>
-File: report_files/figure-latex/murplot-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/murplot-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/murplot-1.pdf  used on input
- line 581.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[16 <./report_files/figure-latex/Homplot-1.pdf>]
-<report_files/figure-latex/attplot-1.pdf, id=167, 361.35pt x 361.35pt>
-File: report_files/figure-latex/attplot-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/attplot-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/attplot-1.pdf  used on input
- line 583.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[17 <./report_files/figure-latex/murplot-1.pdf>]
-<report_files/figure-latex/manplot-1.pdf, id=177, 361.35pt x 361.35pt>
-File: report_files/figure-latex/manplot-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/manplot-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/manplot-1.pdf  used on input
- line 585.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[18 <./report_files/figure-latex/attplot-1.pdf>]
-<report_files/figure-latex/sexplot-1.pdf, id=187, 361.35pt x 361.35pt>
-File: report_files/figure-latex/sexplot-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/sexplot-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/sexplot-1.pdf  used on input
- line 587.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[19 <./report_files/figure-latex/manplot-1.pdf>]
-<report_files/figure-latex/kidplot-1.pdf, id=198, 361.35pt x 361.35pt>
-File: report_files/figure-latex/kidplot-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/kidplot-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/kidplot-1.pdf  used on input
- line 589.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[20 <./report_files/figure-latex/sexplot-1.pdf>]
-<report_files/figure-latex/rplot-1.pdf, id=208, 361.35pt x 361.35pt>
-File: report_files/figure-latex/rplot-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/rplot-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/rplot-1.pdf  used on input l
-ine 591.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[21 <./report_files/figure-latex/kidplot-1.pdf>]
-<report_files/figure-latex/armplot-1.pdf, id=218, 361.35pt x 361.35pt>
-File: report_files/figure-latex/armplot-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/armplot-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/armplot-1.pdf  used on input
- line 593.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[22 <./report_files/figure-latex/rplot-1.pdf>]
-<report_files/figure-latex/unplot-1.pdf, id=228, 361.35pt x 361.35pt>
-File: report_files/figure-latex/unplot-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/unplot-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unplot-1.pdf  used on input 
-line 595.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[23 <./report_files/figure-latex/armplot-1.pdf>]
-<report_files/figure-latex/blaplot-1.pdf, id=238, 361.35pt x 361.35pt>
-File: report_files/figure-latex/blaplot-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/blaplot-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/blaplot-1.pdf  used on input
- line 597.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[24 <./report_files/figure-latex/unplot-1.pdf>] [25 <./report_files/figure-late
-x/blaplot-1.pdf>] [26
+<report_files/figure-latex/unnamed-chunk-9-1.pdf, id=148, 722.7pt x 361.35pt>
+File: report_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
+<use report_files/figure-latex/unnamed-chunk-9-1.pdf>
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-9-1.pdf  used 
+on input line 581.
+(pdftex.def)             Requested size: 455.24826pt x 227.62413pt.
+<report_files/figure-latex/unnamed-chunk-10-1.pdf, id=149, 722.7pt x 361.35pt>
+File: report_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
+<use report_files/figure-latex/unnamed-chunk-10-1.pdf>
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-10-1.pdf  used
+ on input line 583.
+(pdftex.def)             Requested size: 455.24826pt x 227.62413pt.
+[15 <./report_files/figure-latex/classplot-1.pdf> <./report_files/figure-latex/
+unnamed-chunk-9-1.pdf>]
+<report_files/figure-latex/unnamed-chunk-11-1.pdf, id=165, 722.7pt x 216.81pt>
+File: report_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
+<use report_files/figure-latex/unnamed-chunk-11-1.pdf>
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-11-1.pdf  used
+ on input line 585.
+(pdftex.def)             Requested size: 455.24826pt x 136.57448pt.
+[16 <./report_files/figure-latex/unnamed-chunk-10-1.pdf> <./report_files/figure
+-latex/unnamed-chunk-11-1.pdf>] [17
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 600--603
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 603--606
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 606--609
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 609--612
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 612--615
 
  []
@@ -1840,40 +1803,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 618--621
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 621--624
+Underfull \hbox (badness 10000) in paragraph at lines 638--640
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 624--627
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 627--630
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 630--633
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 650--652
-
- []
-
-[27
+[18
 
 ]
 
-LaTeX Warning: Empty bibliography on input line 659.
+LaTeX Warning: Empty bibliography on input line 647.
 
-[28] (./report.aux)
-
-LaTeX Warning: There were undefined references.
-
+[19] (./report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package logreq Info: Writing requests to 'report.run.xml'.
@@ -1881,10 +1821,10 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26172 strings out of 480714
- 440346 string characters out of 5901854
- 1196256 words of memory out of 5000000
- 42867 multiletter control sequences out of 15000+600000
+ 26115 strings out of 480714
+ 438425 string characters out of 5901854
+ 1196299 words of memory out of 5000000
+ 42825 multiletter control sequences out of 15000+600000
  508109 words of font info for 291 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,15n,93p,739b,808s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1900,10 +1840,10 @@ fb><c:/Users/86186/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/bera/f
 vsb8a.pfb><c:/Users/86186/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public
 /bera/fvsr8a.pfb><c:/Users/86186/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1
 /public/mathdesign/mdbch/md-chr8t.pfb>
-Output written on report.pdf (28 pages, 7626820 bytes).
+Output written on report.pdf (19 pages, 7598356 bytes).
 PDF statistics:
- 318 PDF objects out of 1000 (max. 8388607)
- 239 compressed objects within 3 object streams
- 41 named destinations out of 1000 (max. 500000)
- 82021 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 237 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 81986 words of extra memory for PDF output out of 89155 (max. 10000000)
 

@@ -663,13 +663,12 @@ Figure \@ref(fig:gendersa) shows:
 ABS personal safety survey also measures the number of women who contacted the police about the most recent incident within the last 10 years. Only 13.4% of women did so. 
 
 
-
 \clearpage
 
 
 
 \section*{Age}
-For my part, my main job is to investage the victims for the different age groups. I divide the age into four group, teenage, adult, elder adult, and elder. I will compare different class of victims for different groups
+For my part, my main job is to investigate the victims for the different age groups. I divide the age into four group, teenage, adult, elder adult, and elder. I will compare different class of victims for different groups
 
 ``` {r, echo = FALSE, message = FALSE, warning = FALSE}
 Homicide <- read_excel("data/Victims_of_Crime_Australia.xls", 
@@ -776,7 +775,6 @@ Attempted_murder %>%
 
 AM_longer %>%
   pivot_wider(id_cols = c(age, Year, Count), names_from = age, values_from = Count) %>%
-  
   mutate(class = "Attempted") -> AM_wider
 
 AM_longer %>%
@@ -801,7 +799,7 @@ manslaughter_longer %>%
   mutate(Year = as_factor(Year)) %>%
   mutate(class = "Manslaughter") -> manslaughter_wider
 
-AM_longer %>%
+manslaughter_longer %>%
   group_by(age) %>%
   summarise(sum = sum(Count)) %>%
   mutate(class = "Manslaughter") %>%
@@ -1013,7 +1011,15 @@ BE_age %>%
   ggtitle("Blackmail extortion") -> p10
 ```
 
+```{r, echo=FALSE, message = FALSE, warning = FALSE}
+AM_wider$`0–19 years` + AR_wider$`0–19 years`+ BE_wider$`0–19 years` + homicide_wider$`0–19 years` + ka_wider$`0–19 years` + manslaughter_wider$`0–19 years`+murder_wider$`0–19 years`+Robbery_wider$`0–19 years` + SA_wider$`0–19 years`+ UR_wider$`0–19 years` -> teenage
 
+AM_wider$`20–34 years`  + AR_wider$`20–34 years` + BE_wider$`20–34 years` + homicide_wider$`20–34 years` + ka_wider$`20–34 years` + manslaughter_wider$`20–34 years` + murder_wider$`20–34 years` + Robbery_wider$`20–34 years` + SA_wider$`20–34 years` + UR_wider$`20–34 years` -> adult
+
+AM_wider$`35–54 years`  + AR_wider$`35–54 years` + BE_wider$`35–54 years` + homicide_wider$`35–54 years` + ka_wider$`35–54 years` + manslaughter_wider$`35–54 years` + murder_wider$`35–54 years` + Robbery_wider$`35–54 years` + SA_wider$`35–54 years` + UR_wider$`35–54 years` -> elder_adult
+
+AM_wider$`55 years and over`  + AR_wider$`55 years and over` + BE_wider$`55 years and over` + homicide_wider$`55 years and over` + ka_wider$`55 years and over` + manslaughter_wider$`55 years and over` + murder_wider$`55 years and over` + Robbery_wider$`55 years and over` + SA_wider$`55 years and over` + UR_wider$`55 years and over` -> elder
+```
 
 ``` {r combine, echo = FALSE, message = FALSE, warning = FALSE}
 homicide_age %>%
@@ -1030,19 +1036,6 @@ homicide_age %>%
 data %>%
   ggplot() + geom_col(aes(x= class, y = sum, fill = age), position = "fill") -> p_hist
 ```
-from graph, we can see that Sexual assauslt is the largest part, compared with other class
-From the graph, we can see that the people who are 35-54 have bigger probability to has crimal recod
-
-```{r, echo=FALSE, message = FALSE, warning = FALSE}
-AM_wider$`0–19 years` + AR_wider$`0–19 years`+ BE_wider$`0–19 years` + homicide_wider$`0–19 years` + ka_wider$`0–19 years` + manslaughter_wider$`0–19 years`+murder_wider$`0–19 years`+Robbery_wider$`0–19 years` + SA_wider$`0–19 years`+ UR_wider$`0–19 years` -> teenage
-
-AM_wider$`20–34 years`  + AR_wider$`20–34 years` + BE_wider$`20–34 years` + homicide_wider$`20–34 years` + ka_wider$`20–34 years` + manslaughter_wider$`20–34 years` + murder_wider$`20–34 years` + Robbery_wider$`20–34 years` + SA_wider$`20–34 years` + UR_wider$`20–34 years` -> adult
-
-AM_wider$`35–54 years`  + AR_wider$`35–54 years` + BE_wider$`35–54 years` + homicide_wider$`35–54 years` + ka_wider$`35–54 years` + manslaughter_wider$`35–54 years` + murder_wider$`35–54 years` + Robbery_wider$`35–54 years` + SA_wider$`35–54 years` + UR_wider$`35–54 years` -> elder_adult
-
-AM_wider$`55 years and over`  + AR_wider$`55 years and over` + BE_wider$`55 years and over` + homicide_wider$`55 years and over` + ka_wider$`55 years and over` + manslaughter_wider$`55 years and over` + murder_wider$`55 years and over` + Robbery_wider$`55 years and over` + SA_wider$`55 years and over` + UR_wider$`55 years and over` -> elder
-```
-
 
 ```{r, echo=FALSE, message = FALSE, warning = FALSE}
 Year <- 2010:2019
@@ -1064,67 +1057,41 @@ ggplot() +
   ggtitle("elder") -> p_elder
 ```
 
-```{r ageplot, fig.height = 8, fig.width=8, fig.cap="Age group between 2010 to 2019"}
+```{r ageplot, fig.height = 8, fig.width=8, fig.cap="Age groups between 2010 to 2019", message=FALSE, warning=FALSE, echo=FALSE}
 grid.arrange(p_teenage, p_adult, p_elder_adult, p_elder)
 ```
 
-From \@ref(fig:ageplot), we can see that the trend for both teenage and adult is very similar. it has a decrease trend from 2010 to 2015. Then, it has a increse trend from 2015 to 2019. For the elder adult and elder, they have increase trend for all year.
+From \@ref(fig:ageplot), we can see that the trend for both teenage and adult is very similar. it has a decrease trend from 2010 to 2015. Then, it has a increase trend from 2015 to 2019. For the elder adult and elder, they have increase trend for all year.
 
-```{r agedist, fig.height = 5, fig.width=8, fig.cap="Age in class"}
+```{r agedist, fig.height = 5, fig.width=8, fig.cap="Age in class", message=FALSE, warning=FALSE, echo=FALSE}
 p_hist
 ```
 
-From \@ref(fig:agedist). we can see that 20-54 years age are the largest people for victims record. The 55 year and over are the smallest group.
+From \@ref(fig:agedist). the largest group of victim is 20-34 years old, the small group of victim is 55 years and over. Then, the most of victim of sexual and abduction are very young, which is 0-19 year old.
 
 For all class of victims
-```{r class, fig.height = 5, fig.width=8, fig.cap="all class"}
+
+```{r classplot, fig.height = 5, fig.width=8, fig.cap="all class", message=FALSE, warning=FALSE, echo=FALSE}
 data %>%
   ggplot() + geom_col(aes(x= class, y = sum, fill = age))
 ```
 
-The \@ref(fig:class) shows that the the number of people committed Sexual is the largest
+The \@ref(fig:classplot) shows that the the number of people committed Sexual is the largest, the total number is more than 20000. the number of people who are 0-19 is the largest. the second largest class of victims is robbery, the total number is about 100000 people.
 
-Then, There are the each class victims
+Then, There are the each class victims for the different groups
 
-```{r Homplot, echo = FALSE, message = FALSE, warning = FALSE, fig.height = 5, fig.width=5}
-p1
+```{r, echo = FALSE, message = FALSE, warning = FALSE,fig.height = 5, fig.width=10}
+grid.arrange(p1, p2, p3, p4)
 ```
 
-```{r murplot, echo = FALSE, message = FALSE, warning = FALSE,fig.height = 5, fig.width=5}
-p2
+```{r, echo = FALSE, message = FALSE, warning = FALSE,,fig.height = 5, fig.width=10}
+grid.arrange(p5, p6, p7, p8)
 ```
 
-```{r attplot, echo = FALSE, message = FALSE, warning = FALSE, fig.height = 5, fig.width=5}
-p3
+```{r, echo = FALSE, message = FALSE, warning = FALSE,,fig.height = 3, fig.width=10}
+grid.arrange(p9, p10, nrow=1)
 ```
 
-```{r manplot, echo = FALSE, message = FALSE, warning = FALSE, fig.height = 5, fig.width=5}
-p4
-```
-
-```{r sexplot, echo = FALSE, message = FALSE, warning = FALSE, fig.height = 5, fig.width=5}
-p5
-```
-
-```{r kidplot, echo = FALSE, message = FALSE, warning = FALSE, fig.height = 5, fig.width=5}
-p6
-```
-
-```{r rplot, echo = FALSE, message = FALSE, warning = FALSE, fig.height = 5, fig.width=5}
-p7
-```
-
-```{r armplot, echo = FALSE, message = FALSE, warning = FALSE, fig.height = 5, fig.width=5}
-p8
-```
-
-```{r unplot, echo = FALSE, message = FALSE, warning = FALSE, fig.height = 5, fig.width=5}
-p9
-```
-
-```{r blaplot, echo = FALSE, message = FALSE, warning = FALSE, fig.height = 5, fig.width=5}
-p10
-```
 
 \clearpage
 \section*{Conclusion}  
